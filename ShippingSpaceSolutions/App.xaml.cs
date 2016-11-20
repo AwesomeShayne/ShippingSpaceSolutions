@@ -5,6 +5,9 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Renci.SshNet;
+using Renci.SshNet.Common;
+using My
 
 namespace ShippingSpaceSolutions
 {

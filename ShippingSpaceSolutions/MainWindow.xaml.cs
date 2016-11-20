@@ -21,10 +21,22 @@ namespace ShippingSpaceSolutions
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        private bool Set = false;
         public MainWindow()
         {
             InitializeComponent();
+            LaunchMenu Start = new LaunchMenu(this);
+            MainContent.Content = Start;
+        }
+
+        public void SetContent(UserControl Content)
+        {
+            MainContent.Content = Content;
+            if (WindowState != System.Windows.WindowState.Maximized && !Set)
+            {
+                WindowState = System.Windows.WindowState.Maximized;
+                Set = true;
+            }
         }
     }
 }
