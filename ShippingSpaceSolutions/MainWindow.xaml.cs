@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SOSQL;
 
 namespace ShippingSpaceSolutions
 {
@@ -20,6 +21,7 @@ namespace ShippingSpaceSolutions
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
