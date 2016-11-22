@@ -5,9 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ShippingSpaceSolutions"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="800">
-    <Grid
-        Margin="5">
+             d:DesignHeight="25" d:DesignWidth="800">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -22,49 +21,45 @@
         </Grid.ColumnDefinitions>
         <ComboBox 
             Name="TypeComboBox"
-            Margin ="0,5,0,5" 
-            Grid.Column="0"
-            Selected="TypeComboBox_Selected"/>
+            Grid.Column="0"/>
+            <!-- Selected="TypeComboBox_Selected"-->
         <ComboBox 
             Name="DescComboBox"
-            Margin ="0,5,0,5" 
-            Grid.Column="1"
-            Selected="DescComboBox_Selected"/>
+            Grid.Column="1"/>
+            <!-- Selected="DescComboBox_Selected"-->
         <ComboBox 
             Name="ManufacturerComboBox"
-            Margin ="0,5,0,5" 
-            Grid.Column="2"
-            Selected="ManufacturerComboBox_Selected"/>
+            Grid.Column="2"/>
+            <!-- Selected="ManufacturerComboBox_Selected" --> 
         <ComboBox 
             Name="ModelComboBox"
-            Margin ="0,5,0,5" 
-            Grid.Column="3"
-            Selected="ModelComboBox_Selected"/>
+            Grid.Column="3"/>
+            <!-- Selected="ModelComboBox_Selected"--> 
         <TextBox
             Name="QuantityTextBox"
-            Margin ="0,5,0,5" 
             Grid.Column="4"/>
         <TextBox
             Name="WidthTextBox"
-            Margin ="0,5,0,5" 
             Grid.Column="5"/>
         <TextBox
             Name="HeightTextBox"
-            Margin ="0,5,0,5" 
             Grid.Column="6"/>
         <TextBox
             Name="DepthTextBox"
-            Margin ="0,5,0,5" 
             Grid.Column="7"/>
         <TextBox
             Name="WeightTextBox"
-            Margin ="0,5,0,5" 
             Grid.Column="8"/>
         <Button
             Name="AddButton"
-            Margin="0,5,0,5"
             Grid.Column="9"
             Content="Add"
             Click="AddButton_Click"/>
+        <Button
+            Name="RemoveButton"
+            Grid.Column="9"
+            Content="Remove"
+            Click="RemoveButton_Click"
+            Visibility="Hidden"/>
     </Grid>
 </UserControl>

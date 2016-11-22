@@ -23,43 +23,45 @@
                  Grid.Row="0"
                  Grid.Column="0"
                  Grid.RowSpan="4"
-                 Margin="5,5,5,5"/>
+                 Margin="5,5,5,5"
+                 SelectionChanged="StepListBox_SelectionChanged"/>
         <Slider Name="DistanceSlider"
                 Grid.Row="1"
                 Grid.Column="1"
-                Orientation="Vertical"/>
+                Orientation="Vertical"
+                ValueChanged="DistanceSlider_ValueChanged"/>
         <Slider Name="VerticalAngleSlider"
                 Grid.Row="1"
                 Grid.Column="3"
-                Orientation="Vertical"/>
+                Orientation="Vertical"
+                ValueChanged="VerticalAngleSlider_ValueChanged"/>
         <Slider Name="HorizontalAngleSlider"
                 Grid.Row="0"
                 Grid.Column="2"
-                Orientation="Horizontal"/>
+                Orientation="Horizontal"
+                ValueChanged="HorizontalAngleSlider_ValueChanged"/>
         <Slider Name="StepSlider"
                 Grid.Row="2"
                 Grid.Column="2"
-                Orientation="Horizontal"/>
-        <Viewport3D Name="ViewArea">
+                Orientation="Horizontal"
+                ValueChanged="StepSlider_ValueChanged"/>
+        <Viewport3D Name="ViewArea"
+                    Grid.Row="1"
+                    Grid.Column="2">
             <Viewport3D.Camera>
                 <PerspectiveCamera 
-                    x:Name="VPCamera"
-                    Position="0,0,2" 
-                    LookDirection="0,0,-1" 
+                    Position="-600, 600, 600" 
+                    LookDirection="600, -600, -600" 
                     FieldOfView="60" />
             </Viewport3D.Camera>
             <Viewport3D.Children>
-
                 <!-- This ModelVisual3D defines the light cast in the scene. Without light, the 3D 
                  object cannot be seen. Also, the direction of the lights affect shadowing. If desired,
                  you can create multiple lights with different colors that shine from different directions. -->
-                <ModelVisual3D>
+                <ModelVisual3D x:Name="ShownStepModel">
                     <ModelVisual3D.Content>
                         <DirectionalLight Color="#FFFFFF" Direction="-0.612372,-0.5,-0.612372" />
                     </ModelVisual3D.Content>
-                </ModelVisual3D>
-                <ModelVisual3D>
-
                 </ModelVisual3D>
             </Viewport3D.Children>
         </Viewport3D>

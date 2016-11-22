@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SOSQL;
 
 namespace ShippingSpaceSolutions
 {
@@ -21,10 +22,46 @@ namespace ShippingSpaceSolutions
     public partial class DeviceSelector : UserControl
     {
         MainWindow parent;
+        private List<Package> Packages = new List<Package>();
+        private List<List<Package>> orders = new List<List<Package>>();
+        int rowCount = 0;
         public DeviceSelector(MainWindow _parent)
         {
             parent = _parent;
             InitializeComponent();
+            ItemEntryGrid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            var row = new ItemEntry(this, rowCount);
+            Grid.SetRow(row, rowCount);
+            ItemEntryGrid.Children.Add(row);
+        }
+
+        private void ContinueButton_Click(object sender, RoutedEventArgs e)
+        {
+            parent.SetContent(new OutputView(Packages));
+        }
+
+        internal void AddPackage(List<Package> packages, int index)
+        {
+            Packages.AddRange(packages);
+            orders.Insert(index, packages);
+            ItemEntryGrid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            rowCount++;
+            var row = new ItemEntry(this, rowCount);
+            Grid.SetRow(row, rowCount);
+            ItemEntryGrid.Children.Add(row);
+        }
+
+        internal void RemovePackages(int index)
+        {
+            foreach (var rem in orders[index])
+            {
+                Packages.Remove(rem);
+            }
+            var row = new ItemEntry(this, index);
+            Grid.SetRow(row, index);
+            ItemEntryGrid.Children.RemoveAt(index);
+            ItemEntryGrid.Children.Add(row);
+
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SOSQL;
 
 namespace ShippingSpaceSolutions
 {
@@ -20,8 +21,12 @@ namespace ShippingSpaceSolutions
     /// </summary>
     public partial class ItemEntry : UserControl
     {
-        public ItemEntry()
+        DeviceSelector _Container;
+        int number;
+        public ItemEntry(DeviceSelector container, int _number)
         {
+            number = _number;
+            _Container = container;
             InitializeComponent();
         }
 
@@ -47,7 +52,28 @@ namespace ShippingSpaceSolutions
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                var output = new List<Package>();
+                int n;
+                if (!QuantityTextBox.Text.Equals("") && Int32.Parse(QuantityTextBox.Text) >= 0 )
+                    n = Int32.Parse(QuantityTextBox.Text);
+                else
+                    n = 1;
+                for (int i = 0; i < n; i++)
+                    output.Add(new MedicalDevice(Int32.Parse(WidthTextBox.Text), Int32.Parse(HeightTextBox.Text), Int32.Parse(DepthTextBox.Text)));
+                _Container.AddPackage(output, number);
+                AddButton.Visibility = Visibility.Hidden;
+                RemoveButton.Visibility = Visibility.Visible;
+            } catch (Exception ex)
+            {
+                
+            }
+        }
 
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            _Container.RemovePackages(number);
         }
     }
 }
