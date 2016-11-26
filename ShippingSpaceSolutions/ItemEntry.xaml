@@ -12,54 +12,106 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="15"/>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
         <ComboBox 
             Name="TypeComboBox"
-            Grid.Column="0"/>
-            <!-- Selected="TypeComboBox_Selected"-->
+            Grid.Column="0"
+            SelectionChanged="TypeComboBox_Selected"/>
         <ComboBox 
             Name="DescComboBox"
-            Grid.Column="1"/>
-            <!-- Selected="DescComboBox_Selected"-->
+            Grid.Column="1"
+            SelectionChanged="DescComboBox_Selected"/>
         <ComboBox 
             Name="ManufacturerComboBox"
-            Grid.Column="2"/>
-            <!-- Selected="ManufacturerComboBox_Selected" --> 
+            Grid.Column="2"
+            SelectionChanged="ManufacturerComboBox_Selected"/>
         <ComboBox 
             Name="ModelComboBox"
-            Grid.Column="3"/>
-            <!-- Selected="ModelComboBox_Selected"--> 
+            Grid.Column="3"
+            SelectionChanged="ModelComboBox_Selected"/>
+        <ComboBox 
+            Name="TestStatusComboBox"
+            Grid.Column="4"
+            SelectionChanged="TestStatusComboBox_SelectionChanged"/>
+        <ComboBox 
+            Name="NumberComboBox"
+            Grid.Column="5"
+            SelectionChanged="NumberComboBox_SelectionChanged"/>
         <TextBox
             Name="QuantityTextBox"
-            Grid.Column="4"/>
-        <TextBox
-            Name="WidthTextBox"
-            Grid.Column="5"/>
-        <TextBox
-            Name="HeightTextBox"
             Grid.Column="6"/>
         <TextBox
-            Name="DepthTextBox"
+            Name="WidthTextBox"
             Grid.Column="7"/>
+        <CheckBox
+            Name="OrientableX"
+            VerticalAlignment="Center"
+            Grid.Column="8"
+            ToolTip="Orientable with an X Face on the bottom"/>
+        <CheckBox
+            Name="StackableX"
+            VerticalAlignment="Center"
+            Grid.Column="9"
+            ToolTip="Can stack things atop an X Face"/>
+        <TextBox
+            Name="HeightTextBox"
+            Grid.Column="10"/>
+        <CheckBox
+            Name="OrientableY"
+            VerticalAlignment="Center"
+            Grid.Column="11"
+            ToolTip="Orientable with an Y Face on the bottom"/>
+        <CheckBox
+            Name="StackableY"
+            VerticalAlignment="Center"
+            Grid.Column="12"
+            ToolTip="Can stack things atop an Y Face"/>
+        <TextBox
+            Name="DepthTextBox"
+            Grid.Column="13"/>
+        <CheckBox
+            Name="OrientableZ"
+            VerticalAlignment="Center"
+            Grid.Column="14"
+            ToolTip="Orientable with an Z Face on the bottom"/>
+        <CheckBox
+            Name="StackableZ"
+            VerticalAlignment="Center"
+            Grid.Column="15"
+            ToolTip="Can stack things atop an Z Face"/>
         <TextBox
             Name="WeightTextBox"
-            Grid.Column="8"/>
+            Grid.Column="16"/>
         <Button
             Name="AddButton"
-            Grid.Column="9"
+            Grid.Column="17"
             Content="Add"
             Click="AddButton_Click"/>
         <Button
             Name="RemoveButton"
-            Grid.Column="9"
+            Grid.Column="17"
             Content="Remove"
             Click="RemoveButton_Click"
             Visibility="Hidden"/>
+        <Button
+            Name="UpdateDBButton"
+            Grid.Column="18"
+            Content="Update Dims"
+            Click="UpdateDBButton_Click"/>
     </Grid>
 </UserControl>

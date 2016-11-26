@@ -27,12 +27,21 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="15"/>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="17"/>
             </Grid.ColumnDefinitions>
             <Label 
@@ -49,20 +58,26 @@
             Content="Model"
             Grid.Column="3"/>
             <Label
-            Content="Quant."
+            Content="Test"
             Grid.Column="4"/>
             <Label
-            Content="Width"
+            Content="Number"
             Grid.Column="5"/>
             <Label
-            Content="Height"
+            Content="Quant."
             Grid.Column="6"/>
             <Label
-            Content="Depth"
+            Content="Width"
             Grid.Column="7"/>
             <Label
+            Content="Height"
+            Grid.Column="10"/>
+            <Label
+            Content="Depth"
+            Grid.Column="13"/>
+            <Label
             Content="Weight"
-            Grid.Column="8"/>
+            Grid.Column="16"/>
         </Grid>
         <ScrollViewer
             Grid.Row="1"

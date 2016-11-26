@@ -21,7 +21,7 @@ namespace ShippingSpaceSolutions
     /// </summary>
     public partial class DeviceSelector : UserControl
     {
-        MainWindow parent;
+        public MainWindow parent;
         private List<Package> Packages = new List<Package>();
         private List<List<Package>> orders = new List<List<Package>>();
         int rowCount = 0;
