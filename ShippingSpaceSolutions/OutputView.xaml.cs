@@ -23,6 +23,10 @@ namespace ShippingSpaceSolutions
     public partial class OutputView : UserControl
     {
         private Container LoadedContainer = new Container(480, 114, 96, 480, 114, 96, 0, 0);
+        private PerspectiveCamera myPerspectiveCamera = new PerspectiveCamera();
+        private int CameraDistance = 600;
+        private int HorizontalAngle = 315;
+        private int VerticalAngle = 45;
         private List<Package> Packages = new List<Package>();
         private Model3DGroup ModelGroup = new Model3DGroup();
         private GeometryModel3D ContainerObject;
@@ -33,6 +37,9 @@ namespace ShippingSpaceSolutions
             Packages.AddRange(_Packages);
             ContainerObject = LoadedContainer.GetModel();
             InitializeComponent();
+
+           
+
             Packages = Packages.OrderByDescending(b => b.Volume()).ToList();
 
             foreach (Package box in Packages.ToArray())
@@ -55,6 +62,17 @@ namespace ShippingSpaceSolutions
             StepSlider.Minimum = 1;
             StepSlider.IsSnapToTickEnabled = true;
             StepSlider.TickFrequency = 1;
+
+
+            HorizontalAngleSlider.Value = HorizontalAngle;
+            VerticalAngleSlider.Value = VerticalAngle;
+            DistanceSlider.Value = CameraDistance;
+
+            myPerspectiveCamera.FieldOfView = 60;
+
+            ViewArea.Camera = myPerspectiveCamera;
+
+            SetCameraLocation();
         }
 
         private void StepListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -80,19 +98,34 @@ namespace ShippingSpaceSolutions
             }
         }
 
+        private void SetCameraLocation()
+        {
+            double vRadians = ((float)VerticalAngle / 180) * (Math.PI);
+            double hRadians = ((float)HorizontalAngle / 180) * (Math.PI);
+            var locationX = CameraDistance * Math.Sin(vRadians) * Math.Cos(hRadians);
+            var locationZ = CameraDistance * Math.Sin(vRadians) * Math.Sin(hRadians);
+            var locationY = CameraDistance * Math.Cos(vRadians);
+
+            myPerspectiveCamera.Position = new Point3D(locationX, locationY, locationZ);
+            myPerspectiveCamera.LookDirection = new Vector3D(-locationX, -locationY, -locationZ);
+        }
+
         private void DistanceSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-
+            CameraDistance = (int)e.NewValue;
+            SetCameraLocation();
         }
 
         private void VerticalAngleSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-
+            VerticalAngle = (int)e.NewValue;
+            SetCameraLocation();
         }
 
         private void HorizontalAngleSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-
+            HorizontalAngle = (int)e.NewValue;
+            SetCameraLocation();
         }
 
        

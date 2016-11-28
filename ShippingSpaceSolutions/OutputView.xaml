@@ -28,16 +28,25 @@
         <Slider Name="DistanceSlider"
                 Grid.Row="1"
                 Grid.Column="1"
+                Minimum="200"
+                Maximum="2000"
+                TickFrequency="1"
                 Orientation="Vertical"
                 ValueChanged="DistanceSlider_ValueChanged"/>
         <Slider Name="VerticalAngleSlider"
                 Grid.Row="1"
                 Grid.Column="3"
+                Minimum="0"
+                Maximum="90"
+                TickFrequency="1"
                 Orientation="Vertical"
                 ValueChanged="VerticalAngleSlider_ValueChanged"/>
         <Slider Name="HorizontalAngleSlider"
                 Grid.Row="0"
                 Grid.Column="2"
+                Minimum="0"
+                Maximum="360"
+                TickFrequency="1"
                 Orientation="Horizontal"
                 ValueChanged="HorizontalAngleSlider_ValueChanged"/>
         <Slider Name="StepSlider"
@@ -48,12 +57,6 @@
         <Viewport3D Name="ViewArea"
                     Grid.Row="1"
                     Grid.Column="2">
-            <Viewport3D.Camera>
-                <PerspectiveCamera 
-                    Position="-600, 600, 600" 
-                    LookDirection="600, -600, -600" 
-                    FieldOfView="60" />
-            </Viewport3D.Camera>
             <Viewport3D.Children>
                 <!-- This ModelVisual3D defines the light cast in the scene. Without light, the 3D 
                  object cannot be seen. Also, the direction of the lights affect shadowing. If desired,
