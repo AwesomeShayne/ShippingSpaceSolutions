@@ -6,6 +6,25 @@
         xmlns:local="clr-namespace:ShippingSpaceSolutions"
         mc:Ignorable="d"
         Title="Shipping Space Solutions" Height="450" Width="410">
-    <ContentControl
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open" 
+                          Click="MenuOpen_Click"/>
+                <MenuItem Name="SaveMenuEntry"
+                          IsEnabled="False"
+                          Header="_Save" 
+                          Click="MenuSave_Click"/>
+                <Separator />
+                <MenuItem Header="_Exit"
+                          Click="MenuExit_Click"/>
+        </MenuItem>
+    </Menu>
+    <ContentControl Grid.Row="1"
             Name="MainContent"/>
+    </Grid>
 </Window>

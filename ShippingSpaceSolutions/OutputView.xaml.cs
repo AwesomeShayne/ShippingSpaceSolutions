@@ -22,7 +22,7 @@ namespace ShippingSpaceSolutions
     /// </summary>
     public partial class OutputView : UserControl
     {
-        private Container LoadedContainer = new Container(480, 114, 96, 480, 114, 96, 0, 0);
+        internal Container LoadedContainer = new Container(480, 114, 96, 480, 114, 96, 0, 0);
         private PerspectiveCamera myPerspectiveCamera = new PerspectiveCamera();
         private int CameraDistance = 600;
         private int HorizontalAngle = 315;
@@ -32,10 +32,43 @@ namespace ShippingSpaceSolutions
         private GeometryModel3D ContainerObject;
         private List<GeometryModel3D> AllPackageVisuals = new List<GeometryModel3D>();
         private int ShownStep = 1;
+        private Random Rand = new Random();
+
+        public OutputView(Container container)
+        {
+            InitializeComponent();
+            ContainerObject = LoadedContainer.GetModel(Rand);
+            LoadedContainer = container;
+            Packages = LoadedContainer.Packages;
+            foreach (Package box in Packages.ToArray())
+            {
+                StepListBox.Items.Add(string.Concat("Load ", box.Name, " at the shown location"));
+                AllPackageVisuals.Add(box.GetModel(Rand));
+            }
+            ModelGroup.Children.Add(AllPackageVisuals[0]);
+            ModelGroup.Children.Add(ContainerObject);
+            ShownStepModel.Content = ModelGroup;
+            StepSlider.Maximum = Packages.Count();
+            StepSlider.Minimum = 1;
+            StepSlider.IsSnapToTickEnabled = true;
+            StepSlider.TickFrequency = 1;
+
+
+            HorizontalAngleSlider.Value = HorizontalAngle;
+            VerticalAngleSlider.Value = VerticalAngle;
+            DistanceSlider.Value = CameraDistance;
+
+            myPerspectiveCamera.FieldOfView = 60;
+
+            ViewArea.Camera = myPerspectiveCamera;
+
+            SetCameraLocation();
+        }
+
         public OutputView(List<Package> _Packages)
         {
             Packages.AddRange(_Packages);
-            ContainerObject = LoadedContainer.GetModel();
+            ContainerObject = LoadedContainer.GetModel(Rand);
             InitializeComponent();
 
            
@@ -53,7 +86,7 @@ namespace ShippingSpaceSolutions
             foreach (Package box in Packages.ToArray())
             {
                 StepListBox.Items.Add(string.Concat("Load ", box.Name, " at the shown location"));
-                AllPackageVisuals.Add(box.GetModel());
+                AllPackageVisuals.Add(box.GetModel(Rand));
             }
             ModelGroup.Children.Add(AllPackageVisuals[0]);
             ModelGroup.Children.Add(ContainerObject);
@@ -127,7 +160,5 @@ namespace ShippingSpaceSolutions
             HorizontalAngle = (int)e.NewValue;
             SetCameraLocation();
         }
-
-       
     }
 }

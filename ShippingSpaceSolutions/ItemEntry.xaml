@@ -31,27 +31,33 @@
         <ComboBox 
             Name="TypeComboBox"
             Grid.Column="0"
-            SelectionChanged="TypeComboBox_Selected"/>
+            SelectionChanged="TypeComboBox_Selected"
+            IsEditable="True"/>
         <ComboBox 
             Name="DescComboBox"
             Grid.Column="1"
-            SelectionChanged="DescComboBox_Selected"/>
+            SelectionChanged="DescComboBox_Selected"
+            IsEditable="True"/>
         <ComboBox 
             Name="ManufacturerComboBox"
             Grid.Column="2"
-            SelectionChanged="ManufacturerComboBox_Selected"/>
+            SelectionChanged="ManufacturerComboBox_Selected"
+            IsEditable="True"/>
         <ComboBox 
             Name="ModelComboBox"
             Grid.Column="3"
-            SelectionChanged="ModelComboBox_Selected"/>
+            SelectionChanged="ModelComboBox_Selected"
+            IsEditable="True"/>
         <ComboBox 
             Name="TestStatusComboBox"
             Grid.Column="4"
-            SelectionChanged="TestStatusComboBox_SelectionChanged"/>
+            SelectionChanged="TestStatusComboBox_SelectionChanged"
+            IsEditable="True"/>
         <ComboBox 
             Name="NumberComboBox"
             Grid.Column="5"
-            SelectionChanged="NumberComboBox_SelectionChanged"/>
+            SelectionChanged="NumberComboBox_SelectionChanged"
+            IsEditable="True"/>
         <TextBox
             Name="QuantityTextBox"
             Grid.Column="6"/>
