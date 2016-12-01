@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ShippingSpaceSolutions"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
-    <Grid>
+    <Grid MouseWheel="ViewArea_MouseWheel">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="25"/>
@@ -56,7 +56,7 @@
                 ValueChanged="StepSlider_ValueChanged"/>
         <Viewport3D Name="ViewArea"
                     Grid.Row="1"
-                    Grid.Column="2">
+                    Grid.Column="2" MouseDown="ViewArea_MouseDown" MouseUp="ViewArea_MouseUp">
             <Viewport3D.Children>
                 <!-- This ModelVisual3D defines the light cast in the scene. Without light, the 3D 
                  object cannot be seen. Also, the direction of the lights affect shadowing. If desired,

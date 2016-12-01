@@ -160,5 +160,31 @@ namespace ShippingSpaceSolutions
             HorizontalAngle = (int)e.NewValue;
             SetCameraLocation();
         }
+
+        private void ViewArea_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void ViewArea_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void ViewArea_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            int newCamDist = CameraDistance - e.Delta;
+            if (newCamDist > DistanceSlider.Maximum)
+            {
+                newCamDist = (int)DistanceSlider.Maximum;
+            }
+            if (newCamDist < DistanceSlider.Minimum)
+            {
+                newCamDist = (int)DistanceSlider.Minimum;
+            }
+            CameraDistance = newCamDist;
+            DistanceSlider.Value = CameraDistance;
+            SetCameraLocation();
+        }
     }
 }
