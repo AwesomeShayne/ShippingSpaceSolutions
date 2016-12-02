@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using SOSQL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,11 +30,21 @@ namespace ShippingSpaceSolutions
         }
         private void OpenContainerButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
-        }
-        private void OpenRequestButton_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
+            var dlg = new OpenFileDialog();
+            dlg.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            dlg.FilterIndex = 2;
+            dlg.RestoreDirectory = true;
+
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Process save file dialog box results
+            if (result == true)
+            {
+                // Save document
+                var loadedObject = BinarySerializer.ReadFromBinaryFile<Container>(dlg.FileName);
+                parent.SetContent(new OutputView(loadedObject));
+
+            }
         }
         private void NewContainerButton_Click(object sender, RoutedEventArgs e)
         {

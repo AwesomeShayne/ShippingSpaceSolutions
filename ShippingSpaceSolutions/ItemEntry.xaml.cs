@@ -51,20 +51,6 @@ namespace ShippingSpaceSolutions
                 }
                 rdr.Close();
             }
-
-            selDistinctCmd = new MySqlCommand("SELECT DISTINCT sos_number FROM devices", conn);
-            rdr = selDistinctCmd.ExecuteReader();
-
-            if (rdr != null)
-            {
-                while (rdr.Read())
-                {
-                    NumberComboBox.Items.Add(rdr.GetString(0));
-                }
-                rdr.Close();
-            }
-
-
         }
 
         private void TypeComboBox_Selected(object sender, RoutedEventArgs e)

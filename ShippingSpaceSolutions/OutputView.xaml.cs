@@ -110,7 +110,7 @@ namespace ShippingSpaceSolutions
 
         private void StepListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            StepSlider.Value = StepListBox.Items.IndexOf(e.AddedItems[0]);
+            StepSlider.Value = StepListBox.SelectedIndex;
         }
 
         private void StepSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
