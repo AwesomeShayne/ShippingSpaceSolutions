@@ -141,7 +141,7 @@ namespace ShippingSpaceSolutions
 
         private void TestStatusComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!(DescComboBox.SelectedValue == null))
+            if (!(TestStatusComboBox.SelectedValue == null))
             {
                 MySqlConnection conn = _Container.parent.Connection;
                 MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT sos_number FROM devices WHERE category =@category AND description =@description AND manufacturer =@manufacturer AND model_number =@model AND test_status  =@status", conn);

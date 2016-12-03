@@ -37,7 +37,7 @@ namespace ShippingSpaceSolutions
 
         private void ContinueButton_Click(object sender, RoutedEventArgs e)
         {
-            parent.SetContent(new OutputView(Packages));
+            parent.SetContent(new OutputView(Packages, this, parent));
         }
 
         internal void AddPackage(List<Package> packages, int index)

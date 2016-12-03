@@ -34,6 +34,9 @@ namespace ShippingSpaceSolutions
         private int ShownStep = 1;
         private Random Rand = new Random();
 
+        private MainWindow parent;
+        private DeviceSelector previousscreen;
+
         public OutputView(Container container)
         {
             InitializeComponent();
@@ -62,16 +65,19 @@ namespace ShippingSpaceSolutions
 
             ViewArea.Camera = myPerspectiveCamera;
 
+            BackButton.IsEnabled = false;
+
             SetCameraLocation();
         }
 
-        public OutputView(List<Package> _Packages)
+        public OutputView(List<Package> _Packages, DeviceSelector _screen, MainWindow parent)
         {
             Packages.AddRange(_Packages);
             ContainerObject = LoadedContainer.GetModel(Rand);
             InitializeComponent();
 
-           
+            this.parent = parent;
+            previousscreen = _screen;
 
             Packages = Packages.OrderByDescending(b => b.Volume()).ToList();
 
@@ -185,6 +191,11 @@ namespace ShippingSpaceSolutions
             CameraDistance = newCamDist;
             DistanceSlider.Value = CameraDistance;
             SetCameraLocation();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            parent.SetContent(previousscreen);
         }
     }
 }
